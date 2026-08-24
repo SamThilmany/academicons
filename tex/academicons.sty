@@ -24,14 +24,17 @@
 \else
   \RequirePackage{fontspec}
 
-  % \newfontfamily{\ai}{\ai@family}
-  % \newfontfamily\ai@font{\ai@family}[Path=./,Extension=.otf]
-  % \newfontfamily\ai@font{\ai@family}[Path=./,Extension=.ttf]
+  % Name the font file, not the font family. Without Extension, fontspec does
+  % not look for a file and falls through to a system lookup by name; since the
+  % Type 1 font shipped for pdfTeX also registers as `Academicons', that lookup
+  % can return it, and it carries no Unicode cmap -- so every icon resolves to a
+  % missing glyph, silently.
   \newfontfamily\ai@font{\ai@family}[
-    UprightFont = \ai@family,
-    BoldFont = \ai@family,
-    ItalicFont = \ai@family,
-    BoldItalicFont = \ai@family
+    Extension = .otf,
+    UprightFont = *,
+    BoldFont = *,
+    ItalicFont = *,
+    BoldItalicFont = *
   ]
 
   % \newcommand\ai@unicodefont{\usefont{TU}{\ai@family}{m}{n}}
